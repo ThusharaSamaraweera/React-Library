@@ -21,26 +21,24 @@ $input-field-border-color:#959595;
 
   .author-ul{
     li{
-      margin: 0;
       font-size: 1.2em;
       list-style: none;
 
-      .author-icons{
-        display: none;
-        i {
+      i {
+          display: none;
+          font-size: 1.2em;
           cursor: pointer;
-        }
       }
 
       &:hover{
         background-color: $list-hover-color;
-        .author-icons {
-          display: block;
+        i {
+          display: inline-block;
+          }
         }
       }
-    }
 
-  }
+    }
 
   .add-author{
     i{
