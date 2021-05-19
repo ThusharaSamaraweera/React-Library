@@ -1,13 +1,8 @@
 import React from 'react';
-import './App.scss'
-import ClientApp from './ClientApp'
+import Client from "./Client";
 
-const App : React.FC = () => {
-  return (
-      <div>
-        <ClientApp/>
-      </div>
-  )
-}
+const App: React.FC =() => {
+  return <Client/>
+};
 
 export default App;
