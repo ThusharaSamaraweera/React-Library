@@ -8,6 +8,7 @@ $input-field-border-color:#959595;
 .library-content{
   min-height: 100vh;
 
+
   .author-title{
     color: $title-color;
     border-bottom: 2px solid $title-color-underline;
@@ -20,27 +21,32 @@ $input-field-border-color:#959595;
   }
 
   .author-ul{
+    margin-left: -40px;
+
     li{
+      margin: 0;
       font-size: 1.2em;
       list-style: none;
 
-      i {
-          display: none;
-          font-size: 1.2em;
+      .author-icons{
+        display: none;
+        i {
           cursor: pointer;
+        }
       }
 
       &:hover{
         background-color: $list-hover-color;
-        i {
-          display: inline-block;
-          }
+        .author-icons {
+          display: block;
         }
       }
-
     }
 
+  }
+
   .add-author{
+    margin-left: -3px;
     i{
       color  : $create-btn-color;
     }
@@ -49,11 +55,13 @@ $input-field-border-color:#959595;
       font-weight: 500;
       vertical-align: middle;
       cursor: pointer;
-  }
+    }
     cursor: pointer;
   }
 
   .create-author{
+    margin-left: -10px;
+
     h3{
       color:$create-author;
       border-bottom: 2px solid #0c453e;
