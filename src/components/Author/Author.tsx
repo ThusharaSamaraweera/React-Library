@@ -14,7 +14,7 @@ const Author : React.FC<AuthorProps> = (props) => {
     const {author, index} = props;
 
     return(
-        <li className='py-2'>
+        <li className='py-1'>
             <Row>
                 <Col xs={10}>
                     <label>{index}. {author.name}</label>

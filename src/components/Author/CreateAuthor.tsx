@@ -58,7 +58,7 @@ const CreateAuthor: React.FC<createAuthorProps> = (props) => {
     }
 
     return (
-        <Row className='create-author my-4'>
+        <Row className='create-author mt-5 mb-3'>
             <Col xs={12} md={8}>
                 <Row>
 
