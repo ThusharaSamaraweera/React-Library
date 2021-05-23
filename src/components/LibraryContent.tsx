@@ -3,6 +3,7 @@ import Authors from "./Author/Authors";
 import {IAuthors} from "../types/LibraryTypes";
 import React, {useEffect, useState} from "react";
 import {useToasts} from "react-toast-notifications";
+import Books from "./Book/Books";
 
 const LibraryContent: React.FC = () => {
     const authorsList: IAuthors [] = [{name: 'Author 1'}, {name: 'Author 2'}, {name: 'Author 3'}];
@@ -65,7 +66,7 @@ const LibraryContent: React.FC = () => {
     return (
         <Row className='library-content'>
             <Col xs={12} md={6}>
-                <h3>Books</h3>
+                <Books/>
             </Col>
 
             <Authors authors={authors}
