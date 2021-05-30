@@ -1,13 +1,41 @@
 import React from "react";
 import Book from "./Book";
+import {IBooks} from "../../types/LibraryTypes";
+import {Col, Row} from "react-bootstrap";
 
-const BooksList: React.FC = () => {
+type BooksListProps = {
+    booksList: IBooks[];
+    onBookDeleted: (bookIndex: number) => void
+    onUpdateRequest: (bookIndex: number) => void
+}
+
+const BooksList: React.FC<BooksListProps> = (props) => {
+
+    const renderBookList = () => {
+        if (props.booksList.length === 0) {
+            return;
+        }
+        return props.booksList.map((book: IBooks, index: number) => {
+            return <Book book={book} key={index} index={index + 1}
+                         onBookDeleted={props.onBookDeleted}
+                         onUpdateRequest={props.onUpdateRequest}
+
+            />
+        })
+    }
+
     return (
-        <div>
-            <Book/>
-            <Book/>
-        </div>
-        )
+        <Row>
+            <Col>
+                {props.booksList.length === 0 &&
+                <label className='empty-list mb-2'>No books listed here</label>}
+
+                <ul className='book-ul'>
+                    {renderBookList()}
+                </ul>
+            </Col>
+        </Row>
+    )
 }
 
 export default BooksList

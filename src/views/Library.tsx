@@ -5,11 +5,11 @@ import {Container} from "react-bootstrap";
 import {ToastProvider} from "react-toast-notifications";
 
 const Library: React.FC = () => {
-    return(
+    return (
         <Container fluid={true}>
-            <Welcome />
+            <Welcome/>
             <ToastProvider>
-                <LibraryContent />
+                <LibraryContent/>
             </ToastProvider>
         </Container>
     )

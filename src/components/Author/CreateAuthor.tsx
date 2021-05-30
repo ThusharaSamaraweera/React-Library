@@ -1,4 +1,4 @@
-import React, {FormEvent, useEffect, useState} from "react";
+import React, {useEffect, useState} from "react";
 import {Button, Col, Form, Row} from "react-bootstrap";
 import {XCircle} from "react-feather";
 import {IAuthors} from "../../types/LibraryTypes";
@@ -13,17 +13,18 @@ type createAuthorProps = {
 
 const CreateAuthor: React.FC<createAuthorProps> = (props) => {
     const {authorToUpdate} = props
-
     const [authorName, setAuthorName] = useState<string | null>(null)
+    const [validated, setValidated] = useState(false);
 
     const {addToast} = useToasts();
 
 
     useEffect(() => {
         if (!authorToUpdate) {
+            setAuthorName('');
             return;
         }
-
+        setValidated(false);
         setAuthorName(authorToUpdate.name);
     }, [authorToUpdate])
 
@@ -32,13 +33,19 @@ const CreateAuthor: React.FC<createAuthorProps> = (props) => {
         setAuthorName(name);
     }
 
-    const handleOnSubmit = (event: FormEvent) => {
+    const handleOnSubmit = (event: any) => {
         event.preventDefault();
+        const form = event.currentTarget;
+
+        if (form.checkValidity() === false) {
+            event.stopPropagation();
+        }
+        setValidated(true);
 
         if (!authorName || authorName === '') {
-            addToast('Author Name is Not Valid', {appearance: 'warning', autoDismiss: true});
             return;
         }
+
 
         if (authorToUpdate) {
             const userConfirmation = window.confirm("Update Author Name?");
@@ -52,14 +59,15 @@ const CreateAuthor: React.FC<createAuthorProps> = (props) => {
         }
 
         const newAuthor: IAuthors = {name: authorName};
-        props.onAuthorAdded(newAuthor)
+        props.onAuthorAdded(newAuthor);
+        setValidated(false);
         addToast("New Author Created", {appearance: 'success', autoDismiss: true});
         setAuthorName('');
     }
 
     return (
         <Row className='create-author mt-5 mb-3'>
-            <Col xs={12} md={8}>
+            <Col xs={12} md={11} lg={10}>
                 <Row>
 
                     <Col xs={10}>
@@ -69,31 +77,34 @@ const CreateAuthor: React.FC<createAuthorProps> = (props) => {
                     <Col xs={2}>
                         <i><XCircle onClick={props.onFormClose}/></i>
                     </Col>
-
                 </Row>
 
                 <Row>
 
-                    <Col className='my-4'>
-                        <Form className='mx-5' onSubmit={handleOnSubmit}>
+                    <Col className='my-3'>
+                        <Form className='formInputs mx-5' onSubmit={handleOnSubmit} noValidate validated={validated}
+                        >
                             <Form.Group controlId="authorName">
                                 <Form.Label>Name of Author</Form.Label>
                                 <Form.Control type="text" placeholder=""
                                               value={authorName ? authorName : ''}
+                                              required
                                               onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
                                                   handleOnAuthorNameChanged(event.target.value)}
                                 />
+                                <Form.Control.Feedback type="invalid">
+                                    Please provide a valid Author Name.
+                                </Form.Control.Feedback>
                             </Form.Group>
-                            <Button className='create-btn mt-3 py-1 px-4' type='submit'>
+                            <Button className='create-btn mt-4 py-1 px-4' type='submit'>
                                 {authorToUpdate ? 'Update' : 'Create'}
                             </Button>
                         </Form>
-                    </Col>
 
+                    </Col>
                 </Row>
 
             </Col>
-
         </Row>
     );
 }
