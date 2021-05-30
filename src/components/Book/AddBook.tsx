@@ -7,7 +7,7 @@ type AddBookProps = {
 
 const AddBook: React.FC<AddBookProps> = (props) => {
     return (
-        <div className='add-book my-0' onClick={props.handleOnFormOpen}>
+        <div className='add-book mt-3' onClick={props.handleOnFormOpen}>
             <i> <Plus size='1.6em'/></i>
             <label className='mx-2'>Add Book</label>
         </div>
