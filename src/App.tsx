@@ -1,7 +1,7 @@
 import React from 'react';
 import Client from "./Client";
 
-const App: React.FC =() => {
+const App: React.FC = () => {
   return <Client/>
 
 };
