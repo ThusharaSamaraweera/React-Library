@@ -2,8 +2,7 @@ import React from 'react';
 import Client from "./Client";
 
 const App: React.FC = () => {
-  return <Client/>
-
+    return <Client/>
 };
 
 export default App;
