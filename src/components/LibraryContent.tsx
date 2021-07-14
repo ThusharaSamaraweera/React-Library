@@ -2,7 +2,7 @@ import {Col, Row} from "react-bootstrap";
 import Authors from "./Author/Authors";
 import {IAuthor} from "../types/LibraryTypes";
 import React, {useEffect, useState} from "react";
-import {useToasts} from "react-toast-notifications";
+import {ToastProvider, useToasts} from "react-toast-notifications";
 import Books from "./Book/Books";
 
 const LibraryContent: React.FC = () => {
@@ -27,8 +27,8 @@ const LibraryContent: React.FC = () => {
 
   const handleOnAuthorDeleted = (index: number) => {
     const allAuthors: IAuthor[] = authors.slice();
-    const userConfirmation = window.confirm("Delete Author?");
-    if (userConfirmation === true) {
+    const userConfirmation: boolean = window.confirm("Delete Author?");
+    if (userConfirmation) {
       allAuthors.splice(index, 1);
       setAuthors(allAuthors);
       addToast("Author Deleted", {appearance: 'info', autoDismiss: true});
@@ -66,24 +66,24 @@ const LibraryContent: React.FC = () => {
   };
 
   return (
-    <Row className='library-content'>
-      <Col xs={{span: 12, order: 2}} md={{span: 6, order: 1}} className='book-section'>
-        <Books authors={authorsList}/>
-      </Col>
-      <Col xs={{span: 12, order: 1}} md={{span: 6, order: 1}} className='author-section'>
-        <Authors authors={authors}
-                 onAuthorDeleted={handleOnAuthorDeleted}
-                 onUpdateRequest={handleOnUpdateRequest}
-                 onAuthorUpdated={handleUpdateAuthor}
-                 authorToUpdate={authorToUpdate}
-                 formVisible={formVisible}
-                 onAuthorAdded={handleAuthorAdded}
-                 onFormClose={handleOnFormClose}
-                 onClickAddAuthor={handleOnClickAddAuthor}
-        />
-      </Col>
+      <Row className='library-content'>
+        <Col xs={{span: 12, order: 2}} md={{span: 6, order: 1}} className='book-section'>
+          <Books authors={authorsList}/>
+        </Col>
+        <Col xs={{span: 12, order: 1}} md={{span: 6, order: 1}} className='author-section'>
+          <Authors authors={authors}
+                   onAuthorDeleted={handleOnAuthorDeleted}
+                   onUpdateRequest={handleOnUpdateRequest}
+                   onAuthorUpdated={handleUpdateAuthor}
+                   authorToUpdate={authorToUpdate}
+                   formVisible={formVisible}
+                   onAuthorAdded={handleAuthorAdded}
+                   onFormClose={handleOnFormClose}
+                   onClickAddAuthor={handleOnClickAddAuthor}
+          />
+        </Col>
+      </Row>
 
-    </Row>
   )
 }
 

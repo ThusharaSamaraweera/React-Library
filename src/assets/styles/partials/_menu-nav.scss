@@ -1,0 +1,42 @@
+.welcome-section {
+  .menu {
+    border: solid orange 2px;
+
+    .menu-nav {
+      float: right ;
+      overflow: hidden;
+      background-color: #15a323;
+      width: auto;
+      margin-top:15px;
+    }
+
+    .menu-nav li {
+      float: left;
+      display: block;
+      text-align: center;
+      padding: 14px 16px;
+    }
+
+    .menu-nav li a {
+      color: white;
+      text-decoration: none;
+      font-weight: 1000;
+    }
+
+    .menu-nav li:hover {
+      background-color: black;
+      color: white;
+    }
+  }
+}
+
+@media screen and (max-width: 991px) {
+  .welcome-section {
+    .menu {
+      .menu-nav li {
+        float: none;
+        width: 100%;
+      }
+    }
+  }
+}
