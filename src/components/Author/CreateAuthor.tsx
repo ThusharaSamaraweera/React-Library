@@ -3,6 +3,8 @@ import {Button, Col, Form, Row} from "react-bootstrap";
 import {XCircle} from "react-feather";
 import {IAuthor} from "../../types/LibraryTypes";
 import {useToasts} from "react-toast-notifications";
+import { useDispatch } from "react-redux";
+import { addAuthor } from "../../store/actions/AuthorActions";
 
 type createAuthorProps = {
   onFormClose: () => void;
@@ -12,6 +14,7 @@ type createAuthorProps = {
 }
 
 const CreateAuthor: React.FC<createAuthorProps> = (props) => {
+  const dispatch = useDispatch();
   const {authorToUpdate} = props
   const [authorName, setAuthorName] = useState<string | null>(null)
   const [validated, setValidated] = useState(false);
@@ -48,8 +51,8 @@ const CreateAuthor: React.FC<createAuthorProps> = (props) => {
 
 
     if (authorToUpdate) {
-      const userConfirmation = window.confirm("Update Author Name?");
-      if (userConfirmation === true) {
+      const userConfirmation:boolean = window.confirm("Update Author Name?");
+      if (userConfirmation) {
         const updatedAuthor: IAuthor = {...authorToUpdate, name: authorName}
         props.onAuthorUpdated(updatedAuthor);
         setAuthorName('');
@@ -58,8 +61,9 @@ const CreateAuthor: React.FC<createAuthorProps> = (props) => {
       return;
     }
 
-    const newAuthor: IAuthor = {name: authorName};
-    props.onAuthorAdded(newAuthor);
+    // const newAuthor: IAuthor = {name: authorName};
+    // props.onAuthorAdded(newAuthor);
+    dispatch(addAuthor({name: authorName}) )
     setValidated(false);
     addToast("New Author Created", {appearance: 'success', autoDismiss: true});
     setAuthorName('');

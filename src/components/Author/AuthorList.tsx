@@ -2,6 +2,8 @@ import React from "react";
 import {Col, Row} from "react-bootstrap";
 import Author from "./Author";
 import {IAuthor} from "../../types/LibraryTypes";
+import { RootState } from "../../store/reducers/RootReducer";
+import {useSelector} from "react-redux"
 
 type AuthorsListProps = {
   authors: IAuthor[]
@@ -11,7 +13,8 @@ type AuthorsListProps = {
 
 const AuthorList: React.FC<AuthorsListProps> = (props) => {
 
-  const {authors} = props;
+  // const {authors} = props;
+  const authors:IAuthor[] = useSelector((state: RootState) => state.authorReducer.authors)
 
   const renderAuthorList = () => {
     if (authors.length === 0) {
