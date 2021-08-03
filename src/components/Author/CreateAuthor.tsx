@@ -8,7 +8,6 @@ import { addAuthor } from "../../store/actions/AuthorActions";
 
 type createAuthorProps = {
   onFormClose: () => void;
-  onAuthorAdded: (author: IAuthor) => void;
   authorToUpdate: IAuthor | null
   onAuthorUpdated: (updatedAuthor: IAuthor) => void;
 }
@@ -61,8 +60,6 @@ const CreateAuthor: React.FC<createAuthorProps> = (props) => {
       return;
     }
 
-    // const newAuthor: IAuthor = {name: authorName};
-    // props.onAuthorAdded(newAuthor);
     dispatch(addAuthor({name: authorName}) )
     setValidated(false);
     addToast("New Author Created", {appearance: 'success', autoDismiss: true});
