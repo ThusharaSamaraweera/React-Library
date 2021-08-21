@@ -25,7 +25,6 @@ const Author: React.FC<AuthorProps> = (props) => {
     }
   };
 
-  
 
   return (
     <li className='py-2'>

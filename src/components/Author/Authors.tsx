@@ -8,10 +8,12 @@ import React, { useState } from "react";
 type AuthorsProps = {
   onUpdateRequest: (authorIndex: number) => void
   onClickAddAuthor: () => void
-  onAuthorUpdated: (updatedAuthor: IAuthor) => void;
+  onAuthorUpdated: () => void;
   authorToUpdate: IAuthor | null
   formVisible: boolean
   onFormClose: () => void;
+  authorToUpdateIndex: number | null 
+  setFormVisible: (arg0: boolean) => void
 }
 
 const Authors: React.FC<AuthorsProps> = (props) => {
@@ -25,6 +27,8 @@ const Authors: React.FC<AuthorsProps> = (props) => {
       {props.formVisible && <CreateAuthor onFormClose={props.onFormClose}
                                           authorToUpdate={props.authorToUpdate}
                                           onAuthorUpdated={props.onAuthorUpdated}
+                                          authorToUpdateIndex={props.authorToUpdateIndex}
+                                          setFormVisible={props.setFormVisible}
       />}
     </div>
   )

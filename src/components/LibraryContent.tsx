@@ -16,26 +16,35 @@ const LibraryContent: React.FC = () => {
   const dispatch = useDispatch();
   const [authorToUpdate, setAuthorToUpdate] = useState<IAuthor | null>(null);
   const [authorToUpdateIndex, setAuthorToUpdateIndex] = useState<number | null>(null)
-  const [formVisible, setFormVisibility] = useState(false)
+  const [formVisible, setFormVisibility] = useState<boolean>(false)
   const {addToast} = useToasts();
 
   const handleOnClickAddAuthor = () => {
     setFormVisibility(true);
   }
+
   useEffect(() => {
     if (!authorToUpdate) {
       return;
     }
     setFormVisibility(true);
+    console.log(authorToUpdateIndex);
   }, [authorToUpdate]);
 
 
-  const handleUpdateAuthor = (updatedAuthor: IAuthor) => {
+  // const handleUpdateAuthor = (updatedAuthor: IAuthor) => {
+  //   if (authorToUpdateIndex === null) {
+  //     return;
+  //   }
+  //   setAuthorToUpdate(null)
+  //   setAuthorToUpdateIndex(null)
+  //   setFormVisibility(false);
+  // }
+
+  const handleUpdateAuthor = () => {
     if (authorToUpdateIndex === null) {
       return;
     }
-    console.log(authorToUpdateIndex)
-    dispatch(updateAuthor(authorToUpdateIndex, updatedAuthor));
     setAuthorToUpdate(null)
     setAuthorToUpdateIndex(null)
     setFormVisibility(false);
@@ -44,6 +53,7 @@ const LibraryContent: React.FC = () => {
   const handleOnUpdateRequest = (index: number) => {
     setAuthorToUpdate(authors[index]);
     setAuthorToUpdateIndex(index);
+    
   }
 
   const handleOnFormClose = () => {
@@ -65,6 +75,8 @@ const LibraryContent: React.FC = () => {
                    formVisible={formVisible}
                    onFormClose={handleOnFormClose}
                    onClickAddAuthor={handleOnClickAddAuthor}
+                   authorToUpdateIndex={authorToUpdateIndex}
+                   setFormVisible={setFormVisibility}
           />
         </Col> 
       </Row>
