@@ -23,15 +23,6 @@ const LibraryContent: React.FC = () => {
     setFormVisibility(true);
   }
 
-  useEffect(() => {
-    if (!authorToUpdate) {
-      return;
-    }
-    setFormVisibility(true);
-    console.log(authorToUpdateIndex);
-  }, [authorToUpdate]);
-
-
   // const handleUpdateAuthor = (updatedAuthor: IAuthor) => {
   //   if (authorToUpdateIndex === null) {
   //     return;
@@ -61,6 +52,14 @@ const LibraryContent: React.FC = () => {
     setAuthorToUpdate(null)
     setAuthorToUpdateIndex(null)
   }
+
+  useEffect(() => {
+    if (!authorToUpdate) {
+      return;
+    }
+    setFormVisibility(true);
+    // console.log(authorToUpdateIndex);
+  }, [handleOnUpdateRequest]);
 
   return (
       <Row className='library-content'>

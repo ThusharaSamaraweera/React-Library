@@ -80,7 +80,6 @@ const CreateAuthor: React.FC<createAuthorProps> = (props) => {
     <Row className='create-author mt-5 mb-3'>
       <Col xs={12} md={11} lg={10}>
         <Row>
-
           <Col xs={10}>
             <h3>{authorToUpdate ? 'Update' : 'Create'} Author</h3>
           </Col>
@@ -93,7 +92,7 @@ const CreateAuthor: React.FC<createAuthorProps> = (props) => {
         <Row>
 
           <Col className='my-3'>
-            <Form className='formInputs mx-5' onSubmit={handleOnSubmit} noValidate validated={validated}
+            <Form className='formInputs ml-5 mr-3' onSubmit={handleOnSubmit} noValidate validated={validated}
             >
               <Form.Group controlId="authorName">
                 <Form.Label>Name of Author</Form.Label>

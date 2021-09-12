@@ -79,6 +79,17 @@
         cursor: pointer;
       }
 
+      .col-lg-10{
+        .row {
+          .col-2 {
+            align-self: center;
+            display: flex;
+            justify-content: center;
+            padding-left: 42px;
+          }
+        }
+      }
+
       .form-label {
         font-size: 0.7em;
       }
