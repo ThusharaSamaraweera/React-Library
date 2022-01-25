@@ -1,0 +1,37 @@
+.welcome-section {
+  .title {
+    h1 {
+      font-weight: 700;
+      font-size: 4em;
+      color: red;
+    }
+  }
+  .menu {
+    border: 3px solid orange ;
+  }
+
+
+  img {
+    width: 100%;
+    height: auto;
+  }
+
+  .img-credit {
+    text-align: right;
+    padding-top: 3px;
+    padding-right: 5px;
+    font-weight: 400;
+    font-size: 1.2em;
+  }
+}
+
+@media (max-width: 991px) {
+  .welcome-section {
+    .title {
+      h1 {
+        font-weight: 500;
+        font-size: 2em;
+        color: red;
+      }
+    }}
+}

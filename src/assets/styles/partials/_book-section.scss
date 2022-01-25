@@ -1,0 +1,136 @@
+@import "variables";
+
+.library-content {
+  min-height: 130vh;
+
+  .book-section {
+    padding: 0 3em 0 2em;
+
+    .book-title {
+      color: $title-color;
+      border-bottom: 2px solid $title-color-underline;
+      font-weight: 500;
+    }
+
+    .empty-list {
+      font-size: 1.2em;
+      font-style: italic;
+    }
+
+    .book-ul {
+      margin-left: -40px;
+
+      li {
+        margin: 0;
+        font-size: 1.2em;
+        list-style: none;
+
+        .book-icons {
+          display: none;
+          padding-right: 25px;
+          text-align: right;
+
+          i {
+            cursor: pointer;
+          }
+        }
+
+        &:hover {
+          background-color: $list-hover-color;
+
+          .book-icons {
+            display: block;
+            font-size: 0.5em;
+          }
+        }
+      }
+    }
+
+
+    .add-book {
+      display: inline-flex;
+      margin-left: -5px;
+
+      i {
+        color: $create-btn-color;
+      }
+
+      label {
+        font-size: 1.2em;
+        font-weight: 500;
+        vertical-align: middle;
+        cursor: pointer;
+      }
+
+      cursor: pointer;
+    }
+
+    .create-book {
+      margin-left: -15px;
+
+      h3 {
+        color: $create-book;
+        border-bottom: 2px solid #0c453e;
+        display: inline-block;
+        font-size: 1.5em;
+      }
+
+      i {
+        cursor: pointer;
+      }
+
+      .form-label {
+        font-size: 0.7em;
+      }
+
+      .form-control {
+        border-radius: unset;
+        border: 2px solid $input-field-border-color;
+      }
+
+      .create-btn {
+        background-color: $create-btn-color;
+        border-radius: 6px;
+        float: right;
+        font-size: 1.1em;
+      }
+
+      .select-invalid {
+        font-size: 0.9rem;
+        padding-top: 5px;
+        color: #dc3545;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: $extra-small-device-size) {
+
+  .library-content {
+    min-height: 0;
+
+    .bookSection {
+      font-size: 0.8em;
+      padding: 0 1em 0 1em;
+
+      .book-title {
+        font-size: 1.6em;
+      }
+
+      .create-book {
+        .formInputs {
+          margin-left: 0;
+        }
+
+        .form-label {
+          font-size: 0.9em;
+        }
+
+        .select-invalid {
+          font-size: 0.7rem;
+        }
+      }
+    }
+  }
+
+}
