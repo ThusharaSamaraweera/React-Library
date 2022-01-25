@@ -3,15 +3,19 @@ import {Button, Col, Form, Row} from "react-bootstrap";
 import {XCircle} from "react-feather";
 import {IAuthor} from "../../types/LibraryTypes";
 import {useToasts} from "react-toast-notifications";
+import { useDispatch } from "react-redux";
+import { addAuthor, updateAuthor } from "../../store/actions/AuthorActions";
 
 type createAuthorProps = {
   onFormClose: () => void;
-  onAuthorAdded: (author: IAuthor) => void;
   authorToUpdate: IAuthor | null
-  onAuthorUpdated: (updatedAuthor: IAuthor) => void;
-}
+  onAuthorUpdated: () => void;
+  authorToUpdateIndex: number | null
+  setFormVisible: (arg0: boolean) => void
+};
 
 const CreateAuthor: React.FC<createAuthorProps> = (props) => {
+  const dispatch = useDispatch();
   const {authorToUpdate} = props
   const [authorName, setAuthorName] = useState<string | null>(null)
   const [validated, setValidated] = useState(false);
@@ -48,18 +52,25 @@ const CreateAuthor: React.FC<createAuthorProps> = (props) => {
 
 
     if (authorToUpdate) {
-      const userConfirmation = window.confirm("Update Author Name?");
-      if (userConfirmation === true) {
-        const updatedAuthor: IAuthor = {...authorToUpdate, name: authorName}
-        props.onAuthorUpdated(updatedAuthor);
+      console.log(props.authorToUpdateIndex);
+      if(!props.authorToUpdateIndex && props.authorToUpdateIndex !== 0){
+        return;
+      }
+      const userConfirmation:boolean = window.confirm("Update Author Name?");
+      if (userConfirmation) {
+        // const updatedAuthor: IAuthor = {...authorToUpdate, name: authorName}
+        // props.onAuthorUpdated(updatedAuthor);
+        dispatch(updateAuthor(props.authorToUpdateIndex, {name: authorName}))
+        console.log(authorName);
+        props.onAuthorUpdated();
         setAuthorName('');
         addToast("Author Updated", {appearance: 'success', autoDismiss: true});
       }
       return;
     }
 
-    const newAuthor: IAuthor = {name: authorName};
-    props.onAuthorAdded(newAuthor);
+    dispatch(addAuthor({name: authorName}) )
+    props.setFormVisible(false)
     setValidated(false);
     addToast("New Author Created", {appearance: 'success', autoDismiss: true});
     setAuthorName('');

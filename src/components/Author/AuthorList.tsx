@@ -2,16 +2,16 @@ import React from "react";
 import {Col, Row} from "react-bootstrap";
 import Author from "./Author";
 import {IAuthor} from "../../types/LibraryTypes";
+import { RootState } from "../../store/reducers/RootReducer";
+import {useSelector} from "react-redux"
 
 type AuthorsListProps = {
-  authors: IAuthor[]
-  onAuthorDeleted: (authorIndex: number) => void
   onUpdateRequest: (authorIndex: number) => void
 }
 
 const AuthorList: React.FC<AuthorsListProps> = (props) => {
 
-  const {authors} = props;
+  const authors:IAuthor[] = useSelector((state: RootState) => state.authorReducer.authors)
 
   const renderAuthorList = () => {
     if (authors.length === 0) {
@@ -19,7 +19,6 @@ const AuthorList: React.FC<AuthorsListProps> = (props) => {
     }
     return authors.map((author: IAuthor, index: number) => {
       return <Author author={author} key={index} index={index + 1}
-                     onAuthorDeleted={props.onAuthorDeleted}
                      onUpdateRequest={props.onUpdateRequest}
       />
     });
