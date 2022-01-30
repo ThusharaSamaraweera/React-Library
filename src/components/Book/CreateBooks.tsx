@@ -142,7 +142,7 @@ const CreateBooks: React.FC<CreateBooksProps> = (props) => {
                   options={authorsOfOptionList}
                   isClearable={true}
                   isSearchable={false}
-                  theme={theme => ({
+                  theme={ theme => ({
                     ...theme,
                     borderRadius: 0,
                     borderWidth: 2,

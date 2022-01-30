@@ -4,11 +4,12 @@ import {Col, Container, Row} from "react-bootstrap";
 
 const Footer: React.FC = () => {
   return (
-    <div className="footer-dark">
-      <footer>
-        <Container className="container">
-          <Row className="row">
-            <Col className="sm-6 md-2 item">
+    // <div className="row footer-dark">
+
+      <footer className="row footer-dark">
+        {/* <Container className="container"> */}
+          <Row className="xs-12 sm-12">
+            <Col className="sm-6 md-2 item pl-10">
               <h3>Services</h3>
               <ul>
                 <li><a href="www.softvasel.com">Web design</a></li>
@@ -30,16 +31,17 @@ const Footer: React.FC = () => {
                 pulvinar dictum vel in justo.</p>
             </Col>
           </Row>
-          <Row className="item-social">
+          <Row className="item-social xs-12 sm-12">
             <i><a href="www.facebook.com"> <Facebook/> </a></i>
             <i><a href="www.twitter.com"> <Twitter/></a> </i>
             <i><a href="www.instagram.com"> <Mail/></a> </i>
             <i><a href="www.instagram.com"> <Instagram/></a> </i>
           </Row>
           <Row className="copyright">Web Team © 2021</Row>
-        </Container>
+        {/* </Container> */}
       </footer>
-    </div>
+
+    // </div>
   )
 }
 

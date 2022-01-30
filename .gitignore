@@ -1,6 +1,8 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
 .idea/
+yarn.lock
+yarn-error.log
 
 # dependencies
 /node_modules
@@ -23,3 +25,7 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+# vercel
+.vercel
+package-lock.json
