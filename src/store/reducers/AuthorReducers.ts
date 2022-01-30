@@ -7,7 +7,7 @@ interface storestate {
 }
 
 const initState: storestate = {
-    authors: [{name: "kamal"}, {name: "amal2"}, {name: 'vimal'}]
+    authors: [{name: "kamal"}, {name: "amal"}, {name: 'vimal'}]
 }
 
 export const AuthorReducer = (state:storestate = initState, action: AuthorActionTypes) => {
